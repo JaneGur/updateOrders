@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step2 = ({ id }) => {
+const Step3 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copiedFile, setCopiedFile] = useState('');
 
@@ -42,7 +42,7 @@ const Step2 = ({ id }) => {
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
-                <span className="step-number">2</span>
+                <span className="step-number">3</span>
                 <span>Подготовка структуры проекта в IDE</span>
             </div>
             <div className="section-content">
@@ -113,5 +113,5 @@ const Step2 = ({ id }) => {
     );
 };
 
-export default Step2;
+export default Step3;
 

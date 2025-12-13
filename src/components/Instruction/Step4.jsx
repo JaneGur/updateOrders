@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step4 = ({ id }) => {
+const Step5 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copied, setCopied] = useState(false);
 
@@ -54,7 +54,7 @@ export const Deals = Heap.Table('dealsforupgrade', {
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
-                <span className="step-number">4</span>
+                <span className="step-number">5</span>
                 <span>Файл table.tsx</span>
             </div>
             <div className="section-content">
@@ -79,4 +79,4 @@ export const Deals = Heap.Table('dealsforupgrade', {
     );
 };
 
-export default Step4;
+export default Step5;

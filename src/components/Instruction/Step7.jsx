@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step7 = ({ id }) => {
+const Step8 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copied, setCopied] = useState(false);
 
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
-                <span className="step-number">7</span>
+                <span className="step-number">8</span>
                 <span>Ограничение редактирования полей (Body аккаунта)</span>
             </div>
             <div className="section-content">
@@ -180,4 +180,4 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 };
 
-export default Step7;
+export default Step8;

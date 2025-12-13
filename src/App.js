@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import Navigation from './components/Instruction/Navigation';
 import Header from './components/Instruction/Header';
-import Step1 from './components/Instruction/Step1';
-import Step2 from './components/Instruction/Step2';
-import Step3 from './components/Instruction/Step3';
-import Step4 from './components/Instruction/Step4';
-import Step5 from './components/Instruction/Step5';
-import Step6 from './components/Instruction/Step6';
-import Step7 from './components/Instruction/Step7';
+import Step0 from './components/Instruction/Step0';
+import Step2 from './components/Instruction/Step1';
+import Step3 from './components/Instruction/Step2';
+import Step4 from './components/Instruction/Step3';
+import Step5 from './components/Instruction/Step4';
+import Step6 from './components/Instruction/Step5';
+import Step7 from './components/Instruction/Step6';
+import Step8 from './components/Instruction/Step7';
 import Footer from './components/Instruction/Footer';
 import './App.css';
 
@@ -58,13 +59,14 @@ function App() {
           <Header />
           
           <main>
-            <Step1 id="step1" />
+            <Step0 id="step0" />
             <Step2 id="step2" />
             <Step3 id="step3" />
             <Step4 id="step4" />
-            <Step5 id="step5" managerNames={managerNames} />
-            <Step6 id="step6" />
+            <Step5 id="step5" />
+            <Step6 id="step6" managerNames={managerNames} />
             <Step7 id="step7" />
+            <Step8 id="step8" />
           </main>
           
           <Footer />

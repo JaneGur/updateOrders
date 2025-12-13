@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step5 = ({ id }) => {
+const Step6 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copied, setCopied] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -452,7 +452,7 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
-                <span className="step-number">5</span>
+                <span className="step-number">6</span>
                 <span>Файл page.tsx</span>
             </div>
             <div className="section-content">
@@ -488,4 +488,4 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
     );
 };
 
-export default Step5;
+export default Step6;

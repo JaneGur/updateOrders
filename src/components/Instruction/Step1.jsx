@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step1 = ({ id }) => {
+const Step2 = ({ id }) => {
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const Step1 = ({ id }) => {
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
-                <span className="step-number">1</span>
+                <span className="step-number">2</span>
                 <span>Создание дополнительного поля заказа</span>
             </div>
             <div className="section-content">
@@ -70,4 +70,4 @@ const Step1 = ({ id }) => {
     );
 };
 
-export default Step1;
+export default Step2;

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step6 = ({ id }) => {
+const Step7 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copied, setCopied] = useState({
         condition: false,
@@ -48,19 +48,19 @@ const Step6 = ({ id }) => {
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
-                <span className="step-number">6</span>
+                <span className="step-number">7</span>
                 <span>Настройка воронки</span>
             </div>
             <div className="section-content">
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.1 Создание воронки</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.1 Создание воронки</h3>
                 <p>Перейдите в <span className="highlight">Воронки → Создать новую</span>.</p>
                 <br />
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.2 Блок «Заказ создан»</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.2 Блок «Заказ создан»</h3>
                 <p>Создайте блок <span className="parameter">«Заказ создан»</span>, выберите <span className="parameter">«Все предложения»</span>.</p>
 
                 <br />
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.3 От блока «Заказ создан» к блоку «Пользовательский код»</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.3 От блока «Заказ создан» к блоку «Пользовательский код»</h3>
                 <p>От данного блока проведите стрелку к блоку <span className="parameter">«Пользовательский код»</span>.</p>
                 
                 <p>В Блоке <span className="parameter">«Пользовательский код»</span>:</p>
@@ -72,12 +72,12 @@ const Step6 = ({ id }) => {
 
                 <br />
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.4 Блок «Заказ оплачен»</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.4 Блок «Заказ оплачен»</h3>
                 <p>Создайте блок <span className="parameter">«Заказ оплачен»</span>, выберите <span className="parameter">«Все предложения»</span>.</p>
 
                 <br />
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.5 От блока «Заказ оплачен» к блоку «Пользовательский код»</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.5 От блока «Заказ оплачен» к блоку «Пользовательский код»</h3>
                 <p>От данного блока проведите стрелку к блоку <span className="parameter">«Пользовательский код»</span>.</p>
                 
                 <p>В Блоке <span className="parameter">«Пользовательский код»</span>:</p>
@@ -89,7 +89,7 @@ const Step6 = ({ id }) => {
 
                 <br />
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.6 Условие между блоками</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.6 Условие между блоками</h3>
                 <p>Между блоками <span className="parameter">«Пользовательский код»</span> и блоком <span className="parameter">«Обновить заказ»</span> вставляем условие.</p>
 
                 <div className="code-block">
@@ -107,7 +107,7 @@ const Step6 = ({ id }) => {
 
                 <br />
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.7 Блок «Обновить заказ»</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.7 Блок «Обновить заказ»</h3>
                 <p>В блоке поставьте галочки и укажите параметры:</p>
                 <ol className="step-list">
                     <li>✅ Поставьте галочку <span className="parameter">Обновить доп. поле заказа</span></li>
@@ -134,4 +134,4 @@ const Step6 = ({ id }) => {
     );
 };
 
-export default Step6;
+export default Step7;

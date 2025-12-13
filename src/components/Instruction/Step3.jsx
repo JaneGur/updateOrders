@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step3 = ({ id }) => {
+const Step4 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copied, setCopied] = useState(false);
 
@@ -92,7 +92,7 @@ app.accountHook('@builder/hook-node-actions/ВАШ_ID_ДЕЙСТВИЯ', async (
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
-                <span className="step-number">3</span>
+                <span className="step-number">4</span>
                 <span>Файл changeDealInformation.tsx</span>
             </div>
             <div className="section-content">
@@ -125,4 +125,4 @@ app.accountHook('@builder/hook-node-actions/ВАШ_ID_ДЕЙСТВИЯ', async (
     );
 };
 
-export default Step3;
+export default Step4;

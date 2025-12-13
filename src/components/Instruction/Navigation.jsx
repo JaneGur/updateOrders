@@ -8,46 +8,52 @@ const Navigation = ({ activeSection }) => {
             </div>
             <div className="nav-list">
                 <a
-                    href="#step1"
-                    className={`nav-item ${activeSection === 'step1' ? 'active' : ''}`}
+                    href="#step0"
+                    className={`nav-item ${activeSection === 'step0' ? 'active' : ''}`}
                 >
-                    Шаг 1. Создание поля заказа
+                    Шаг 1. Видео инструкция
                 </a>
                 <a
                     href="#step2"
                     className={`nav-item ${activeSection === 'step2' ? 'active' : ''}`}
                 >
-                    Шаг 2. Структура проекта
+                    Шаг 2. Создание поля заказа
                 </a>
                 <a
                     href="#step3"
                     className={`nav-item ${activeSection === 'step3' ? 'active' : ''}`}
                 >
-                    Шаг 3. Файл changeDealInformation.tsx
+                    Шаг 3. Структура проекта
                 </a>
                 <a
                     href="#step4"
                     className={`nav-item ${activeSection === 'step4' ? 'active' : ''}`}
                 >
-                    Шаг 4. Файл table.tsx
+                    Шаг 4. Файл changeDealInformation.tsx
                 </a>
                 <a
                     href="#step5"
                     className={`nav-item ${activeSection === 'step5' ? 'active' : ''}`}
                 >
-                    Шаг 5. Файл page.tsx
+                    Шаг 5. Файл table.tsx
                 </a>
                 <a
                     href="#step6"
                     className={`nav-item ${activeSection === 'step6' ? 'active' : ''}`}
                 >
-                    Шаг 6. Настройка воронки
+                    Шаг 6. Файл page.tsx
                 </a>
                 <a
                     href="#step7"
                     className={`nav-item ${activeSection === 'step7' ? 'active' : ''}`}
                 >
-                    Шаг 7. Ограничение редактирования
+                    Шаг 7. Настройка воронки
+                </a>
+                <a
+                    href="#step8"
+                    className={`nav-item ${activeSection === 'step8' ? 'active' : ''}`}
+                >
+                    Шаг 8. Ограничение редактирования
                 </a>
             </div>
         </nav>
