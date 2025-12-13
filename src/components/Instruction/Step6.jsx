@@ -70,7 +70,6 @@ const Step6 = ({ id }) => {
                     <li>Скопируйте идентификатор действия.</li>
                     <li>Вставьте его в файл changeDealInformation.tsx.</li>
                     <li>Установите: <span className="parameter">Сохранить результат в переменную: deal.startCost</span></li>
-                    <li><em>(deal.startCost можно нажать и скопировать)</em></li>
                 </ol>
 
                 <div className="arrow-step">⬇️</div>
@@ -88,7 +87,6 @@ const Step6 = ({ id }) => {
                     <li>Скопируйте блок «Пользовательский код» из пункта 6.3 (чтобы идентификатор остался тот же).</li>
                     <li>Вставьте его в файл changeDealInformation.tsx.</li>
                     <li>Установите: <span className="parameter">Сохранить результат в переменную: deal.finishCost</span></li>
-                    <li><em>(deal.finishCost можно нажать и скопировать)</em></li>
                 </ol>
 
                 <div className="arrow-step">➡️</div>
