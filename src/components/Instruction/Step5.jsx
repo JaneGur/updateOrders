@@ -3,12 +3,19 @@ import React, { useEffect, useRef, useState } from 'react';
 const Step5 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copied, setCopied] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [codeReady, setCodeReady] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Начинаем загрузку кода только когда секция видима
+                    setTimeout(() => {
+                        setCodeReady(true);
+                        setIsLoading(false);
+                    }, 300);
                 }
             },
             {
@@ -49,6 +56,7 @@ const managerNames: Record<number, string> = {
 }
 
 const dealsPage = app.html('/deals', async (ctx, req) => {
+
   const allDeals = await Deals.findAll(ctx, { order: { createdAt: 'desc' } })
   const deals = allDeals.filter(d => d.manager_user_id && d.finished_at_deal)
   const dealsJson = JSON.stringify(deals)
@@ -57,7 +65,7 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
     <html>
       <head>
         <title>Заказы с апгрейдом</title>
-        <style>{\\\`
+        <style>{\`
           body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f7fa;
@@ -220,11 +228,11 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
               padding: 10px;
             }
           }
-        \\\`}</style>
+        \`}</style>
         <script>
-          {\\\`
-            const dealsData = \\\${dealsJson};
-            const managerNamesMap = \\\${JSON.stringify(managerNames)};
+          {\`
+            const dealsData = \${dealsJson};
+            const managerNamesMap = \${JSON.stringify(managerNames)};
             let activePeriod = '';
 
             function calculateTotalUpgrade(filteredDeals) {
@@ -251,9 +259,11 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
               document.getElementById('averageUpgrade').textContent = averageUpgrade + ' ₽';
               document.getElementById('totalDeals').textContent = filteredDeals.length;
               
+              // Получаем выбранного менеджера
               const managerId = document.getElementById('managerSelect').value;
               const managerName = managerId ? managerNamesMap[managerId] || 'Менеджер' : 'Все менеджеры';
               
+              // Получаем период
               let periodText = '';
               if (activePeriod === 'day') {
                 periodText = 'за сегодня';
@@ -342,8 +352,7 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             }
 
             window.onload = loadDeals;
-          \\\`}
-        </script>
+          \`}</script>
       </head>
       <body>
         <h1>Список заказов</h1>
@@ -370,9 +379,9 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
           <label>Менеджер:</label>
           <select id="managerSelect" onchange="loadDeals()">
             <option value="">Все</option>
-            \\\${Object.entries(managerNames).map(([id, name]) =>
-              \\\`<option value="\\\${id}">\\\${name}</option>\\\`
-            ).join('')}
+            {Object.entries(managerNames).map(([id, name]) => (
+              <option value={id}>{name}</option>
+            ))}
           </select>
 
           <div class="period-buttons">
@@ -409,6 +418,36 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
     </html>
   )
 })`;
+    // Скелетон для загрузки
+    const SkeletonLoader = () => (
+        <div className="skeleton-container">
+            <div className="skeleton-header">
+                <div className="skeleton-step-number"></div>
+                <div className="skeleton-title"></div>
+            </div>
+            <div className="skeleton-content">
+                <div className="skeleton-info-box"></div>
+                <div className="skeleton-text"></div>
+                <div className="skeleton-text short"></div>
+                <div className="skeleton-code-block">
+                    <div className="skeleton-code-header"></div>
+                    <div className="skeleton-code-lines">
+                        {[...Array(15)].map((_, i) => (
+                            <div key={i} className="skeleton-code-line" style={{ width: `${Math.random() * 40 + 60}%` }}></div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
+    if (isLoading) {
+        return (
+            <section id={id} className="content-section skeleton-section" ref={sectionRef}>
+                <SkeletonLoader />
+            </section>
+        );
+    }
 
     return (
         <section id={id} className="content-section" ref={sectionRef}>
@@ -424,19 +463,27 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
                 <p>Вставьте код из инструкции без изменений логики.</p>
                 <p>Проверьте список менеджеров:</p>
 
-                <div className="code-block">
-                    <div className="code-header">
-                        <span className="code-language">TypeScript</span>
-                        <button
-                            className={`copy-btn ${copied ? 'copied' : ''}`}
-                            onClick={() => copyCode(pageCode)}
-                        >
-                            {copied ? 'Скопировано!' : 'Копировать'}
-                        </button>
+                {codeReady && (
+                    <div className="code-block large-code">
+                        <div className="code-header">
+                            <span className="code-language">TypeScript</span>
+                            <button
+                                className={`copy-btn ${copied ? 'copied' : ''}`}
+                                onClick={() => copyCode(pageCode)}
+                                disabled={isLoading}
+                            >
+                                {copied ? 'Скопировано!' : 'Копировать'}
+                            </button>
+                        </div>
+                        <pre><code>{pageCode}</code></pre>
                     </div>
-                    <pre><code>{pageCode}</code></pre>
+                )}
+                <div className="info-box" style={{ marginTop: '20px' }}>
+                    <strong>⚙️ Настройка кода:</strong>
+                    <p>Замените в объекте <span className="parameter">const managerNames</span> значения на ID менеджеров и соответствующие им имена</p>
                 </div>
             </div>
+            
         </section>
     );
 };

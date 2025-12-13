@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Step1 = ({ id }) => {
     const sectionRef = useRef(null);
@@ -27,6 +27,18 @@ const Step1 = ({ id }) => {
         };
     }, []);
 
+    const [copied, setCopied] = useState(false);
+
+    const handleCopyText = async (text) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error('Не удалось скопировать текст:', err);
+        }
+    };
+
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
@@ -38,8 +50,18 @@ const Step1 = ({ id }) => {
 
                 <p>Создайте поле:</p>
                 <ul className="step-list">
-                    <li><strong>Название:</strong> Разница между суммой клиента и финальным платежом</li>
-                    <li><strong>Тип:</strong> Число</li>
+                    <li>
+                        <strong>Название:</strong>{' '}
+                        <span
+                            className="copyable-text"
+                            onClick={() => handleCopyText('Разница между суммой клиента и финальным платежом')}
+                            title="Нажмите, чтобы скопировать"
+                        >
+                            Разница между суммой клиента и финальным платежом
+                        </span>
+                        {copied && <span className="copied-indicator"> ✓ Скопировано!</span>}
+                    </li>
+                    <li><strong>Тип:</strong> Строка</li>
                 </ul>
 
                 <p>Сохраните поле.</p>

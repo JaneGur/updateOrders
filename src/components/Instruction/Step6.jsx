@@ -57,29 +57,45 @@ const Step6 = ({ id }) => {
 
                 <div className="arrow-step">⬇️</div>
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.2 Блок «Заказ создан (все предложения)»</h3>
-                <p>Тип блока: <span className="parameter">Пользовательский код</span></p>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.2 Блок «Заказ создан»</h3>
+                <p>Создайте блок <span className="parameter">«Заказ создан»</span>, выберите <span className="parameter">«Все предложения»</span>.</p>
 
+                <div className="arrow-step">➡️</div>
+
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.3 От блока «Заказ создан» к блоку «Пользовательский код»</h3>
+                <p>От данного блока проведите стрелку к блоку <span className="parameter">«Пользовательский код»</span>.</p>
+                
+                <p>В Блоке <span className="parameter">«Пользовательский код»</span>:</p>
                 <ol className="step-list">
                     <li>Скопируйте идентификатор действия.</li>
                     <li>Вставьте его в файл changeDealInformation.tsx.</li>
                     <li>Установите: <span className="parameter">Сохранить результат в переменную: deal.startCost</span></li>
+                    <li><em>(deal.startCost можно нажать и скопировать)</em></li>
                 </ol>
 
                 <div className="arrow-step">⬇️</div>
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.3 Блок «Заказ оплачен (все предложения)»</h3>
-                <p>Тип блока: <span className="parameter">Пользовательский код</span></p>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.4 Блок «Заказ оплачен»</h3>
+                <p>Создайте блок <span className="parameter">«Заказ оплачен»</span>, выберите <span className="parameter">«Все предложения»</span>.</p>
 
+                <div className="arrow-step">➡️</div>
+
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.5 От блока «Заказ оплачен» к блоку «Пользовательский код»</h3>
+                <p>От данного блока проведите стрелку к блоку <span className="parameter">«Пользовательский код»</span>.</p>
+                
+                <p>В Блоке <span className="parameter">«Пользовательский код»</span>:</p>
                 <ol className="step-list">
-                    <li>Используйте тот же идентификатор действия.</li>
-                    <li>Укажите: <span className="parameter">Сохранить результат в переменную: deal.finishCost</span></li>
+                    <li>Скопируйте блок «Пользовательский код» из пункта 6.3 (чтобы идентификатор остался тот же).</li>
+                    <li>Вставьте его в файл changeDealInformation.tsx.</li>
+                    <li>Установите: <span className="parameter">Сохранить результат в переменную: deal.finishCost</span></li>
+                    <li><em>(deal.finishCost можно нажать и скопировать)</em></li>
                 </ol>
 
-                <div className="arrow-step">⬇️</div>
+                <div className="arrow-step">➡️</div>
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.4 Условие между блоками</h3>
-                <p>В стрелке между блоками:</p>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.6 Условие между блоками</h3>
+                <p>От блока <span className="parameter">«Пользовательский код»</span> к блоку <span className="parameter">«Условие между блоками»</span>.</p>
+                <p>Используйте существующий блок 6.4.</p>
 
                 <div className="code-block">
                     <div className="code-header">
@@ -94,13 +110,16 @@ const Step6 = ({ id }) => {
                     <pre><code>{conditionCode}</code></pre>
                 </div>
 
-                <div className="arrow-step">⬇️</div>
+                <div className="arrow-step">➡️</div>
 
-                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.5 Блок «Обновить заказ»</h3>
+                <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.7 Блок «Обновить заказ»</h3>
+                <p>В блоке поставьте галочки и укажите параметры:</p>
                 <ol className="step-list">
-                    <li>Поставьте галочку <span className="parameter">Обновить доп. поле заказа</span>.</li>
+                    <li>✅ Поставьте галочку <span className="parameter">Обновить доп. поле заказа</span></li>
                     <li>Выберите поле: <span className="parameter">Разница между суммой клиента и финальным платежом</span></li>
-                    <li>Значение:</li>
+                    <li>Укажите значение: <span className="parameter">Number(deal.finishCost) - Number(deal.startCost)</span> <em>(можно скопировать)</em></li>
+                    <li>✅ Поставьте галочку <span className="parameter">Обновить теги</span></li>
+                    <li>Укажите нужный тег: <span className="parameter">«апгрейд со входа»</span></li>
                 </ol>
 
                 <div className="code-block">

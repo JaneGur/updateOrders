@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Step2 = ({ id }) => {
     const sectionRef = useRef(null);
+    const [copiedFile, setCopiedFile] = useState('');
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -27,6 +28,17 @@ const Step2 = ({ id }) => {
         };
     }, []);
 
+    const copyFileName = (fileName) => {
+        navigator.clipboard.writeText(fileName)
+            .then(() => {
+                setCopiedFile(fileName);
+                setTimeout(() => setCopiedFile(''), 2000);
+            })
+            .catch(err => {
+                console.error('Ошибка при копировании:', err);
+            });
+    };
+
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
@@ -38,16 +50,63 @@ const Step2 = ({ id }) => {
 
                 <div className="file-structure">
                     <span className="folder">changeDealInformation</span>
-                    <span className="file">├── changeDealInformation.tsx</span>
-                    <span className="file">├── page.tsx</span>
-                    <span className="file">└── table.tsx</span>
+                    <span className="file">├── </span>
+                    <button
+                        className={`file-name-btn ${copiedFile === 'changeDealInformation.tsx' ? 'copied' : ''}`}
+                        onClick={() => copyFileName('changeDealInformation.tsx')}
+                        title="Копировать имя файла"
+                    >
+                        changeDealInformation.tsx
+                    </button>
+                    <br />
+                    <span className="file">├── </span>
+                    <button
+                        className={`file-name-btn ${copiedFile === 'page.tsx' ? 'copied' : ''}`}
+                        onClick={() => copyFileName('page.tsx')}
+                        title="Копировать имя файла"
+                    >
+                        page.tsx
+                    </button>
+                    <br />
+                    <span className="file">└── </span>
+                    <button
+                        className={`file-name-btn ${copiedFile === 'table.tsx' ? 'copied' : ''}`}
+                        onClick={() => copyFileName('table.tsx')}
+                        title="Копировать имя файла"
+                    >
+                        table.tsx
+                    </button>
                 </div>
 
                 <p>Внутри папки создайте 3 файла:</p>
                 <ul className="step-list">
-                    <li>changeDealInformation.tsx</li>
-                    <li>page.tsx</li>
-                    <li>table.tsx</li>
+                    <li>
+                        <button
+                            className={`file-name-btn ${copiedFile === 'changeDealInformation.tsx' ? 'copied' : ''}`}
+                            onClick={() => copyFileName('changeDealInformation.tsx')}
+                            title="Копировать имя файла"
+                        >
+                            changeDealInformation.tsx
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className={`file-name-btn ${copiedFile === 'page.tsx' ? 'copied' : ''}`}
+                            onClick={() => copyFileName('page.tsx')}
+                            title="Копировать имя файла"
+                        >
+                            page.tsx
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className={`file-name-btn ${copiedFile === 'table.tsx' ? 'copied' : ''}`}
+                            onClick={() => copyFileName('table.tsx')}
+                            title="Копировать имя файла"
+                        >
+                            table.tsx
+                        </button>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -55,3 +114,4 @@ const Step2 = ({ id }) => {
 };
 
 export default Step2;
+
