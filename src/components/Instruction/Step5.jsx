@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const Step5 = ({ id, managerNames }) => {
+const Step5 = ({ id }) => {
     const sectionRef = useRef(null);
     const [copied, setCopied] = useState(false);
 
@@ -42,27 +42,22 @@ const Step5 = ({ id, managerNames }) => {
     const pageCode = `import { jsx } from '@app/html-jsx'
 import { Deals } from './table'
 
-
 const managerNames: Record<number, string> = {
   287115534: 'Анжела Романова',
   287115542: 'Эльмира Сарова',
   287115546: 'Лилия Новикова',
 }
 
-
 const dealsPage = app.html('/deals', async (ctx, req) => {
-
-
   const allDeals = await Deals.findAll(ctx, { order: { createdAt: 'desc' } })
   const deals = allDeals.filter(d => d.manager_user_id && d.finished_at_deal)
   const dealsJson = JSON.stringify(deals)
-
 
   return (
     <html>
       <head>
         <title>Заказы с апгрейдом</title>
-        <style>{\`
+        <style>{\\\`
           body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f7fa;
@@ -70,14 +65,12 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             color: #333;
           }
 
-
           h1 {
             text-align: center;
             margin-bottom: 30px;
             color: #2c3e50;
             font-size: 28px;
           }
-
 
           .stats-container {
             background: #fff;
@@ -91,7 +84,6 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             align-items: center;
           }
 
-
           .stat-item {
             background: #f0f3f7;
             padding: 15px 20px;
@@ -99,20 +91,17 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             min-width: 200px;
           }
 
-
           .stat-label {
             font-size: 14px;
             color: #666;
             margin-bottom: 5px;
           }
 
-
           .stat-value {
             font-size: 24px;
             font-weight: 600;
             color: #2c3e50;
           }
-
 
           .filters {
             display: flex;
@@ -123,7 +112,6 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             justify-content: center;
           }
 
-
           select, input[type="date"], button {
             padding: 8px 14px;
             border: 1px solid #ccc;
@@ -132,11 +120,9 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             transition: all 0.2s;
           }
 
-
           select:hover, input[type="date"]:hover, button:hover {
             border-color: #999;
           }
-
 
           .period-buttons button {
             border: 1px solid #ccc;
@@ -149,18 +135,15 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             transition: all 0.3s;
           }
 
-
           .period-buttons button.active {
             background-color: #4CAF50;
             color: #fff;
             border-color: #4CAF50;
           }
 
-
           .period-buttons button:hover:not(.active) {
             background-color: #e6f0f6;
           }
-
 
           button.reset-btn {
             background-color: #f44336;
@@ -169,11 +152,9 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             transition: background-color 0.3s;
           }
 
-
           button.reset-btn:hover {
             background-color: #d32f2f;
           }
-
 
           table {
             border-collapse: collapse;
@@ -184,7 +165,6 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             overflow: hidden;
           }
 
-
           th, td {
             border-bottom: 1px solid #e0e0e0;
             padding: 12px 15px;
@@ -192,24 +172,20 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             font-size: 14px;
           }
 
-
           th {
             background: #f0f3f7;
             color: #555;
             font-weight: 600;
           }
 
-
           tbody tr:nth-child(even) {
             background: #f9f9f9;
           }
-
 
           tbody tr:hover {
             background: #e0f7ff;
             transition: background 0.2s;
           }
-
 
           .date-range {
             display: none;
@@ -217,46 +193,39 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             align-items: center;
           }
 
-
           .date-range input {
             width: 150px;
           }
-
 
           @media (max-width: 800px) {
             .filters {
               flex-direction: column;
             }
 
-
             .period-buttons {
               margin-top: 10px;
             }
-
 
             .stats-container {
               flex-direction: column;
               align-items: stretch;
             }
 
-
             .stat-item {
               min-width: auto;
             }
-
 
             table th, table td {
               font-size: 13px;
               padding: 10px;
             }
           }
-        \`}</style>
+        \\\`}</style>
         <script>
-          {\`
-            const dealsData = \${dealsJson};
-            const managerNamesMap = \${JSON.stringify(managerNames)};
+          {\\\`
+            const dealsData = \\\${dealsJson};
+            const managerNamesMap = \\\${JSON.stringify(managerNames)};
             let activePeriod = '';
-
 
             function calculateTotalUpgrade(filteredDeals) {
               return filteredDeals.reduce((sum, deal) => {
@@ -264,7 +233,6 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
                 return sum + upgradeValue;
               }, 0).toFixed(2);
             }
-
 
             function calculateAverageUpgrade(filteredDeals) {
               if (filteredDeals.length === 0) return '0.00';
@@ -275,7 +243,6 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
               return (total / filteredDeals.length).toFixed(2);
             }
 
-
             function updateStatistics(filteredDeals) {
               const totalUpgrade = calculateTotalUpgrade(filteredDeals);
               const averageUpgrade = calculateAverageUpgrade(filteredDeals);
@@ -284,11 +251,9 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
               document.getElementById('averageUpgrade').textContent = averageUpgrade + ' ₽';
               document.getElementById('totalDeals').textContent = filteredDeals.length;
               
-              // Получаем выбранного менеджера
               const managerId = document.getElementById('managerSelect').value;
               const managerName = managerId ? managerNamesMap[managerId] || 'Менеджер' : 'Все менеджеры';
               
-              // Получаем период
               let periodText = '';
               if (activePeriod === 'day') {
                 periodText = 'за сегодня';
@@ -302,23 +267,19 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
                 }
               }
               
-              document.getElementById('statsTitle').textContent = \`Статистика: \${managerName} \${periodText}\`;
+              document.getElementById('statsTitle').textContent = \\\`Статистика: \\\${managerName} \\\${periodText}\\\`;
             }
-
 
             function loadDeals() {
               const managerId = document.getElementById('managerSelect').value;
               const fromInput = document.getElementById('fromDate').value;
               const toInput = document.getElementById('toDate').value;
 
-
               let filtered = dealsData;
               if (managerId) filtered = filtered.filter(d => d.manager_user_id == managerId);
 
-
               const now = new Date();
               const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
 
               if (activePeriod === 'day') {
                 filtered = filtered.filter(d => new Date(d.finished_at_deal) >= startOfToday);
@@ -341,27 +302,24 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
                 }
               }
 
-
               const tbody = document.getElementById('dealsBody');
               tbody.innerHTML = '';
               filtered.forEach(deal => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = \`
-                  <td>\${deal.id_deal}</td>
-                  <td>\${deal.id_user}</td>
-                  <td>\${managerNamesMap[deal.manager_user_id] ?? deal.manager_user_id}</td>
-                  <td>\${deal.cost_deal ? parseFloat(deal.cost_deal).toFixed(2) + ' ₽' : '—'}</td>
-                  <td>\${deal.user_payed_money_value ? parseFloat(deal.user_payed_money_value).toFixed(2) + ' ₽' : '—'}</td>
-                  <td>\${deal.upgrade ? parseFloat(deal.upgrade).toFixed(2) + ' ₽' : '—'}</td>
-                  <td>\${deal.finished_at_deal ? new Date(deal.finished_at_deal).toLocaleString('ru-RU') : '—'}</td>
-                \`;
+                tr.innerHTML = \\\`
+                  <td>\\\${deal.id_deal}</td>
+                  <td>\\\${deal.id_user}</td>
+                  <td>\\\${managerNamesMap[deal.manager_user_id] ?? deal.manager_user_id}</td>
+                  <td>\\\${deal.cost_deal ? parseFloat(deal.cost_deal).toFixed(2) + ' ₽' : '—'}</td>
+                  <td>\\\${deal.user_payed_money_value ? parseFloat(deal.user_payed_money_value).toFixed(2) + ' ₽' : '—'}</td>
+                  <td>\\\${deal.upgrade ? parseFloat(deal.upgrade).toFixed(2) + ' ₽' : '—'}</td>
+                  <td>\\\${deal.finished_at_deal ? new Date(deal.finished_at_deal).toLocaleString('ru-RU') : '—'}</td>
+                \\\`;
                 tbody.appendChild(tr);
               });
 
-
               updateStatistics(filtered);
             }
-
 
             function setPeriod(period) {
               activePeriod = period;
@@ -369,11 +327,9 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
               buttons.forEach(btn => btn.classList.remove('active'));
               if (period) document.getElementById('btn_' + period).classList.add('active');
 
-
               document.querySelector('.date-range').style.display = period === 'range' ? 'flex' : 'none';
               loadDeals();
             }
-
 
             function resetFilters() {
               document.getElementById('managerSelect').value = '';
@@ -385,14 +341,12 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
               loadDeals();
             }
 
-
             window.onload = loadDeals;
-          \`}
+          \\\`}
         </script>
       </head>
       <body>
         <h1>Список заказов</h1>
-
 
         <div class="stats-container">
           <h2 id="statsTitle" style="width: 100%; margin: 0 0 15px 0; color: #2c3e50; font-size: 20px;">
@@ -412,23 +366,20 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
           </div>
         </div>
 
-
         <div class="filters">
           <label>Менеджер:</label>
           <select id="managerSelect" onchange="loadDeals()">
             <option value="">Все</option>
-            \\${Object.entries(managerNames).map(([id, name]) =>
-              `<option value="${id}">${name}</option>`
+            \\\${Object.entries(managerNames).map(([id, name]) =>
+              \\\`<option value="\\\${id}">\\\${name}</option>\\\`
             ).join('')}
           </select>
-
 
           <div class="period-buttons">
             <button id="btn_day" onclick="setPeriod('day')">Сегодня</button>
             <button id="btn_week" onclick="setPeriod('week')">Последняя неделя</button>
             <button id="btn_range" onclick="setPeriod('range')">Период</button>
           </div>
-
 
           <div class="date-range">
             <label>с:</label>
@@ -437,10 +388,8 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
             <input type="date" id="toDate" onchange="loadDeals()" />
           </div>
 
-
           <button class="reset-btn" onclick="resetFilters()">Сбросить фильтры</button>
         </div>
-
 
         <table>
           <thead>
