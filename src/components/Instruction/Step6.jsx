@@ -54,13 +54,11 @@ const Step6 = ({ id }) => {
             <div className="section-content">
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.1 Создание воронки</h3>
                 <p>Перейдите в <span className="highlight">Воронки → Создать новую</span>.</p>
-
-                <div className="arrow-step">⬇️</div>
-
+                <br />
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.2 Блок «Заказ создан»</h3>
                 <p>Создайте блок <span className="parameter">«Заказ создан»</span>, выберите <span className="parameter">«Все предложения»</span>.</p>
 
-                <div className="arrow-step">➡️</div>
+                <br />
 
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.3 От блока «Заказ создан» к блоку «Пользовательский код»</h3>
                 <p>От данного блока проведите стрелку к блоку <span className="parameter">«Пользовательский код»</span>.</p>
@@ -72,12 +70,12 @@ const Step6 = ({ id }) => {
                     <li>Установите: <span className="parameter">Сохранить результат в переменную: deal.startCost</span></li>
                 </ol>
 
-                <div className="arrow-step">⬇️</div>
+                <br />
 
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.4 Блок «Заказ оплачен»</h3>
                 <p>Создайте блок <span className="parameter">«Заказ оплачен»</span>, выберите <span className="parameter">«Все предложения»</span>.</p>
 
-                <div className="arrow-step">➡️</div>
+                <br />
 
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.5 От блока «Заказ оплачен» к блоку «Пользовательский код»</h3>
                 <p>От данного блока проведите стрелку к блоку <span className="parameter">«Пользовательский код»</span>.</p>
@@ -89,11 +87,10 @@ const Step6 = ({ id }) => {
                     <li>Установите: <span className="parameter">Сохранить результат в переменную: deal.finishCost</span></li>
                 </ol>
 
-                <div className="arrow-step">➡️</div>
+                <br />
 
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.6 Условие между блоками</h3>
-                <p>От блока <span className="parameter">«Пользовательский код»</span> к блоку <span className="parameter">«Условие между блоками»</span>.</p>
-                <p>Используйте существующий блок 6.4.</p>
+                <p>Между блоками <span className="parameter">«Пользовательский код»</span> и блоком <span className="parameter">«Обновить заказ»</span> вставляем условие.</p>
 
                 <div className="code-block">
                     <div className="code-header">
@@ -108,7 +105,7 @@ const Step6 = ({ id }) => {
                     <pre><code>{conditionCode}</code></pre>
                 </div>
 
-                <div className="arrow-step">➡️</div>
+                <br />
 
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>6.7 Блок «Обновить заказ»</h3>
                 <p>В блоке поставьте галочки и укажите параметры:</p>
