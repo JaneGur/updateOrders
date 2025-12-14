@@ -465,7 +465,7 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
                 )}
                 <div className="info-box" style={{ marginTop: '20px' }}>
                     <strong>⚙️ Настройка кода:</strong>
-                    <p>Замените в объекте <span className="parameter">const managerNames</span> значения на ID менеджеров и соответствующие им имена</p>
+                    <p>Замените в объекте <span className="parameter">const managerNames</span> на строке 4 значения на ID менеджеров и соответствующие им имена</p>
                 </div>
             </div>
             

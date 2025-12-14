@@ -39,6 +39,27 @@ const Step3 = ({ id }) => {
             });
     };
 
+    const files = [
+        {
+            name: 'changeDealInformation',
+            description: 'Логика создания/обновления/удаления записей сделок',
+            icon: '⚙️',
+            color: '#38bdf8'
+        },
+        {
+            name: 'page',
+            description: 'HTML-страница со статистикой и фильтрами',
+            icon: '📄',
+            color: '#10b981'
+        },
+        {
+            name: 'table',
+            description: 'Определение структуры таблицы БД',
+            icon: '📊',
+            color: '#f59e0b'
+        }
+    ];
+
     return (
         <section id={id} className="content-section" ref={sectionRef}>
             <div className="section-header">
@@ -46,72 +67,76 @@ const Step3 = ({ id }) => {
                 <span>Подготовка структуры проекта в IDE</span>
             </div>
             <div className="section-content">
-                <p>В IDE создайте папку:</p>
-
-                <div className="file-structure">
-                    <span className="folder">changeDealInformation</span>
-                    <span className="file">├── </span>
-                    <button
-                        className={`file-name-btn ${copiedFile === 'changeDealInformation.tsx' ? 'copied' : ''}`}
-                        onClick={() => copyFileName('changeDealInformation.tsx')}
-                        title="Копировать имя файла"
+                <div className="info-box" style={{ marginBottom: '30px' }}>
+                    <strong>📁 Создайте папку:</strong>
+                    <code
+                        className={`folder-name ${copiedFile === 'changeDealInformation' ? 'copied' : ''}`}
+                        onClick={() => copyFileName('changeDealInformation')}
+                        style={{ cursor: 'pointer' }}
                     >
-                        changeDealInformation.tsx
-                    </button>
-                    <br />
-                    <span className="file">├── </span>
-                    <button
-                        className={`file-name-btn ${copiedFile === 'page.tsx' ? 'copied' : ''}`}
-                        onClick={() => copyFileName('page.tsx')}
-                        title="Копировать имя файла"
-                    >
-                        page.tsx
-                    </button>
-                    <br />
-                    <span className="file">└── </span>
-                    <button
-                        className={`file-name-btn ${copiedFile === 'table.tsx' ? 'copied' : ''}`}
-                        onClick={() => copyFileName('table.tsx')}
-                        title="Копировать имя файла"
-                    >
-                        table.tsx
-                    </button>
+                        changeDealInformation
+                    </code>
+                    {copiedFile === 'changeDealInformation' && (
+                        <span className="copied-indicator">✓ Скопировано</span>
+                    )}
                 </div>
 
-                <p>Внутри папки создайте 3 файла:</p>
-                <ul className="step-list">
-                    <li>
-                        <button
-                            className={`file-name-btn ${copiedFile === 'changeDealInformation.tsx' ? 'copied' : ''}`}
-                            onClick={() => copyFileName('changeDealInformation.tsx')}
-                            title="Копировать имя файла"
+                <h3 className="files-subtitle">Внутри папки создайте 3 файла:</h3>
+
+                <div className="file-cards-grid">
+                    {files.map((file, index) => (
+                        <div 
+                            key={file.name}
+                            className={`file-card ${copiedFile === file.name ? 'copied' : ''}`}
+                            style={{ '--card-color': file.color, '--card-index': index }}
+                            onClick={() => copyFileName(file.name)}
                         >
-                            changeDealInformation.tsx
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className={`file-name-btn ${copiedFile === 'page.tsx' ? 'copied' : ''}`}
-                            onClick={() => copyFileName('page.tsx')}
-                            title="Копировать имя файла"
-                        >
-                            page.tsx
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className={`file-name-btn ${copiedFile === 'table.tsx' ? 'copied' : ''}`}
-                            onClick={() => copyFileName('table.tsx')}
-                            title="Копировать имя файла"
-                        >
-                            table.tsx
-                        </button>
-                    </li>
-                </ul>
+                            <div className="file-card-icon" style={{ background: file.color }}>
+                                {file.icon}
+                            </div>
+                            <div className="file-card-content">
+                                <div className="file-card-name">
+                                    {file.name}
+                                </div>
+                                <div className="file-card-description">
+                                    {file.description}
+                                </div>
+                            </div>
+                            <div className="file-card-action">
+                                {copiedFile === file.name ? (
+                                    <span className="copy-success">✓ Скопировано</span>
+                                ) : (
+                                    <span className="copy-hint">Нажмите, чтобы скопировать</span>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="project-structure-visual">
+                    <div className="structure-title">
+                        <span className="structure-icon">🗂️</span>
+                        Итоговая структура проекта:
+                    </div>
+                    <div className="structure-tree">
+                        <div className="tree-folder">
+                            <span className="tree-icon folder-icon">📁</span>
+                            <span className="tree-name">changeDealInformation/</span>
+                        </div>
+                        <div className="tree-children">
+                            {files.map((file, index) => (
+                                <div key={file.name} className="tree-file" style={{ '--file-index': index }}>
+                                    <span className="tree-connector">{index === files.length - 1 ? '└─' : '├─'}</span>
+                                    <span className="tree-icon file-icon">{file.icon}</span>
+                                    <span className="tree-name">{file.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );
 };
 
 export default Step3;
-
