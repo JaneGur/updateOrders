@@ -195,14 +195,14 @@ body {
 }
 
 .nav-item.active {
-  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%);
-  border-color: #0284c7;
-  color: #ffffff;
-  transform: translateX(8px) scale(1.03);
+ background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateX(8px) scale(1.02);
   box-shadow: 
-    0 10px 30px rgba(56, 189, 248, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  font-weight: 700;
+    0 8px 20px rgba(56, 189, 248, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #0369a1;
+  font-weight: 600;
 }
 
 .nav-item.active::before {
