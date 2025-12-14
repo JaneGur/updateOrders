@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import CodeBlock from '../CodeBlock/CodeBlock';
 
 const Step7 = ({ id }) => {
     const sectionRef = useRef(null);
-    const [copied, setCopied] = useState({
-        condition: false,
-        update: false
-    });
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -30,17 +27,6 @@ const Step7 = ({ id }) => {
             }
         };
     }, []);
-
-    const copyCode = (code, type) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopied(prev => ({ ...prev, [type]: true }));
-                setTimeout(() => setCopied(prev => ({ ...prev, [type]: false })), 2000);
-            })
-            .catch(err => {
-                console.error('Ошибка при копировании:', err);
-            });
-    };
 
     const conditionCode = 'Number(deal.finishCost) - Number(deal.startCost) >= 15000';
     const updateCode = 'Number(deal.finishCost) - Number(deal.startCost)';
@@ -92,18 +78,13 @@ const Step7 = ({ id }) => {
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.6 Условие между блоками</h3>
                 <p>Между блоками <span className="parameter">«Пользовательский код»</span> и блоком <span className="parameter">«Обновить заказ»</span> вставляем условие.</p>
 
-                <div className="code-block">
-                    <div className="code-header">
-                        <span className="code-language">JavaScript</span>
-                        <button
-                            className={`copy-btn ${copied.condition ? 'copied' : ''}`}
-                            onClick={() => copyCode(conditionCode, 'condition')}
-                        >
-                            {copied.condition ? 'Скопировано!' : 'Копировать'}
-                        </button>
-                    </div>
-                    <pre><code>{conditionCode}</code></pre>
-                </div>
+                <CodeBlock
+                    code={conditionCode}
+                    language="javascript"
+                    showLineNumbers={false}
+                    collapsible={false}
+                    copyButton={true}
+                />
 
                 <br />
 
@@ -117,18 +98,13 @@ const Step7 = ({ id }) => {
                     <li>Укажите нужный тег: <span className="parameter">«апгрейд со входа»</span></li>
                 </ol>
 
-                <div className="code-block">
-                    <div className="code-header">
-                        <span className="code-language">JavaScript</span>
-                        <button
-                            className={`copy-btn ${copied.update ? 'copied' : ''}`}
-                            onClick={() => copyCode(updateCode, 'update')}
-                        >
-                            {copied.update ? 'Скопировано!' : 'Копировать'}
-                        </button>
-                    </div>
-                    <pre><code>{updateCode}</code></pre>
-                </div>
+                <CodeBlock
+                    code={updateCode}
+                    language="javascript"
+                    showLineNumbers={false}
+                    collapsible={false}
+                    copyButton={true}
+                />
             </div>
         </section>
     );

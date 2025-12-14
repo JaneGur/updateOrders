@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import CodeBlock from '../CodeBlock/CodeBlock';
 
 const Step8 = ({ id }) => {
     const sectionRef = useRef(null);
-    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -27,17 +27,6 @@ const Step8 = ({ id }) => {
             }
         };
     }, []);
-
-    const copyCode = (code) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            })
-            .catch(err => {
-                console.error('Ошибка при копировании:', err);
-            });
-    };
 
     const blockingCode = `<!--БЛОКИРУЕМ ПОЛЯ -->
 
@@ -157,18 +146,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p>Перейдите в <span className="highlight">Настройки аккаунта → Body</span>.</p>
                 <p>Вставьте код блокировки.</p>
 
-                <div className="code-block">
-                    <div className="code-header">
-                        <span className="code-language">HTML/JavaScript</span>
-                        <button
-                            className={`copy-btn ${copied ? 'copied' : ''}`}
-                            onClick={() => copyCode(blockingCode)}
-                        >
-                            {copied ? 'Скопировано!' : 'Копировать'}
-                        </button>
-                    </div>
-                    <pre><code>{blockingCode}</code></pre>
-                </div>
+                <CodeBlock
+                    code={blockingCode}
+                    language="javascript"
+                    showLineNumbers={true}
+                    collapsible={true}
+                    maxLines={15}
+                    copyButton={true}
+                />
 
                 <div className="info-box" style={{ marginTop: '20px' }}>
                     <strong>⚙️ Настройка кода:</strong>

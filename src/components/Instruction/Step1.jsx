@@ -29,15 +29,42 @@ const Step2 = ({ id }) => {
 
     const [copied, setCopied] = useState(false);
 
-    const handleCopyText = async (text) => {
-        try {
-            await navigator.clipboard.writeText(text);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        } catch (err) {
-            console.error('Не удалось скопировать текст:', err);
-        }
-    };
+    const handleCopyText = async (text, event) => {
+    try {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        createCopyParticles(event);
+        setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+        console.error('Не удалось скопировать текст:', err);
+    }
+};
+
+const createCopyParticles = (e) => {
+    const element = e.currentTarget;
+    const rect = element.getBoundingClientRect();
+    const particleCount = 12;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'copy-particle';
+        
+        const angle = (Math.PI * 2 * i) / particleCount;
+        const velocity = 50 + Math.random() * 50;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        particle.style.left = `${rect.left + rect.width / 2}px`;
+        particle.style.top = `${rect.top + rect.height / 2}px`;
+        particle.style.setProperty('--tx', `${tx}px`);
+        particle.style.setProperty('--ty', `${ty}px`);
+        particle.style.animation = `particleFly 0.8s ease-out forwards`;
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => particle.remove(), 800);
+    }
+};
 
     return (
         <section id={id} className="content-section" ref={sectionRef}>
@@ -54,7 +81,7 @@ const Step2 = ({ id }) => {
                         <strong>Название:</strong>{' '}
                         <span
                             className="copyable-text"
-                            onClick={() => handleCopyText('Разница между суммой клиента и финальным платежом')}
+                            onClick={(e) => handleCopyText('Разница между суммой клиента и финальным платежом', e)}
                             title="Нажмите, чтобы скопировать"
                         >
                             Разница между суммой клиента и финальным платежом

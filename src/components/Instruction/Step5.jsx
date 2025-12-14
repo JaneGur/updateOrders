@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import CodeBlock from '../CodeBlock/CodeBlock';
 
 const Step6 = ({ id }) => {
     const sectionRef = useRef(null);
-    const [copied, setCopied] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [codeReady, setCodeReady] = useState(false);
 
@@ -34,17 +34,6 @@ const Step6 = ({ id }) => {
             }
         };
     }, []);
-
-    const copyCode = (code) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            })
-            .catch(err => {
-                console.error('Ошибка при копировании:', err);
-            });
-    };
 
     const pageCode = `import { jsx } from '@app/html-jsx'
 import { Deals } from './table'
@@ -464,19 +453,15 @@ const dealsPage = app.html('/deals', async (ctx, req) => {
                 <p>Проверьте список менеджеров:</p>
 
                 {codeReady && (
-                    <div className="code-block large-code">
-                        <div className="code-header">
-                            <span className="code-language">TypeScript</span>
-                            <button
-                                className={`copy-btn ${copied ? 'copied' : ''}`}
-                                onClick={() => copyCode(pageCode)}
-                                disabled={isLoading}
-                            >
-                                {copied ? 'Скопировано!' : 'Копировать'}
-                            </button>
-                        </div>
-                        <pre><code>{pageCode}</code></pre>
-                    </div>
+                    <CodeBlock
+                        code={pageCode}
+                        language="typescript"
+                        showLineNumbers={true}
+                        collapsible={true}
+                        maxLines={15}
+                        copyButton={true}
+                        isLoading={isLoading}
+                    />
                 )}
                 <div className="info-box" style={{ marginTop: '20px' }}>
                     <strong>⚙️ Настройка кода:</strong>

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import CodeBlock from '../CodeBlock/CodeBlock';
 
 const Step4 = ({ id }) => {
     const sectionRef = useRef(null);
-    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -27,17 +27,6 @@ const Step4 = ({ id }) => {
             }
         };
     }, []);
-
-    const copyCode = (code) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            })
-            .catch(err => {
-                console.error('Ошибка при копировании:', err);
-            });
-    };
 
     const code = `import { HookParams } from '@templates/sdk'
 import { getDealInfo } from '@getcourse/sdk'
@@ -103,18 +92,14 @@ app.accountHook('@builder/hook-node-actions/ВАШ_ID_ДЕЙСТВИЯ', async (
                 <p>Откройте файл changeDealInformation.tsx.</p>
                 <p>Полностью вставьте код:</p>
 
-                <div className="code-block">
-                    <div className="code-header">
-                        <span className="code-language">TypeScript</span>
-                        <button
-                            className={`copy-btn ${copied ? 'copied' : ''}`}
-                            onClick={() => copyCode(code)}
-                        >
-                            {copied ? 'Скопировано!' : 'Копировать'}
-                        </button>
-                    </div>
-                    <pre><code>{code}</code></pre>
-                </div>
+                <CodeBlock
+                    code={code}
+                    language="typescript"
+                    showLineNumbers={true}
+                    collapsible={true}
+                    maxLines={10}
+                    copyButton={true}
+                />
 
                 <div className="warning">
                     <div className="warning-title">Важно:</div>

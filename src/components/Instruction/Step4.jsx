@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import CodeBlock from '../CodeBlock/CodeBlock';
 
 const Step5 = ({ id }) => {
     const sectionRef = useRef(null);
-    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -28,17 +28,6 @@ const Step5 = ({ id }) => {
         };
     }, []);
 
-    const copyCode = (code) => {
-        navigator.clipboard.writeText(code)
-            .then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-            })
-            .catch(err => {
-                console.error('Ошибка при копировании:', err);
-            });
-    };
-
     const tableCode = `import { Heap } from '@app/heap'
 
 export const Deals = Heap.Table('dealsforupgrade', {
@@ -62,18 +51,13 @@ export const Deals = Heap.Table('dealsforupgrade', {
                     <strong>📌 Назначение:</strong> таблица для хранения сделок с апгрейдом.
                 </div>
 
-                <div className="code-block">
-                    <div className="code-header">
-                        <span className="code-language">TypeScript</span>
-                        <button
-                            className={`copy-btn ${copied ? 'copied' : ''}`}
-                            onClick={() => copyCode(tableCode)}
-                        >
-                            {copied ? 'Скопировано!' : 'Копировать'}
-                        </button>
-                    </div>
-                    <pre><code>{tableCode}</code></pre>
-                </div>
+                <CodeBlock
+                    code={tableCode}
+                    language="typescript"
+                    showLineNumbers={true}
+                    collapsible={false}
+                    copyButton={true}
+                />
             </div>
         </section>
     );
