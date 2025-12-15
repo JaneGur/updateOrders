@@ -50,15 +50,16 @@ const Step3 = ({ id }) => {
             name: 'page',
             description: 'HTML-страница со статистикой и фильтрами',
             icon: '📄',
-            color: '#10b981'
+            color: '#0ea5e9'
         },
         {
             name: 'table',
             description: 'Определение структуры таблицы БД',
             icon: '📊',
-            color: '#f59e0b'
+            color: '#7dd3fc'
         }
     ];
+  
 
     return (
         <section id={id} className="content-section" ref={sectionRef}>

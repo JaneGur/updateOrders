@@ -775,11 +775,11 @@ pre {
   gap: 10px;
   margin-bottom: 12px;
   padding: 10px;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   border-radius: 10px;
-  border: 2px solid #f59e0b;
+  border: 2px solid #7dd3fc;
   font-weight: 700;
-  color: #92400e;
+  color: #0369a1;
   animation: slideInLeft 0.5s ease-out;
 }
 
