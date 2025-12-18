@@ -68,7 +68,7 @@ const Step7 = ({ id }) => {
                 
                 <p>В Блоке <span className="parameter">«Пользовательский код»</span>:</p>
                 <ol className="step-list">
-                    <li>Скопируйте блок «Пользовательский код» из пункта 6.3 (чтобы идентификатор остался тот же).</li>
+                    <li>Скопируйте блок «Пользовательский код» из пункта 7.3 (чтобы идентификатор остался тот же).</li>
                     <li>Вставьте его в файл changeDealInformation.tsx.</li>
                     <li>Установите: <span className="parameter">Сохранить результат в переменную: deal.finishCost</span></li>
                 </ol>
@@ -76,7 +76,7 @@ const Step7 = ({ id }) => {
                 <br />
 
                 <h3 style={{ marginBottom: '20px', color: '#0f172a', fontWeight: 700 }}>7.6 Условие между блоками</h3>
-                <p>Между блоками <span className="parameter">«Пользовательский код»</span> и блоком <span className="parameter">«Обновить заказ»</span> вставляем условие.</p>
+                <p>Между блоками <span className="parameter">«Пользовательский код»</span> и блоком <span className="parameter">«Обновить заказ»</span> вставляем условие: <span className="parameter">«Запустить, если все условия выполнены  - Значения переменных»</span> (копируем условие ниже) </p>
 
                 <CodeBlock
                     code={conditionCode}
@@ -92,7 +92,7 @@ const Step7 = ({ id }) => {
                 <p>В блоке поставьте галочки и укажите параметры:</p>
                 <ol className="step-list">
                     <li>✅ Поставьте галочку <span className="parameter">Обновить доп. поле заказа</span></li>
-                    <li>Выберите поле: <span className="parameter">Разница между суммой клиента и финальным платежом</span></li>
+                    <li>Выберите поле: <span className="parameter">Апгрейд заказа</span></li>
                     <li>Укажите значение: <span className="parameter">Number(deal.finishCost) - Number(deal.startCost)</span> <em>(можно скопировать)</em></li>
                     <li>✅ Поставьте галочку <span className="parameter">Обновить теги</span></li>
                     <li>Укажите нужный тег: <span className="parameter">«апгрейд со входа»</span></li>

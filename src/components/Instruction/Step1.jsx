@@ -73,7 +73,7 @@ const createCopyParticles = (e) => {
                 <span>Создание дополнительного поля заказа</span>
             </div>
             <div className="section-content">
-                <p>В GetCourse перейдите в <span className="highlight">Настройки → Дополнительные поля → Заказы</span>.</p>
+                <p>В GetCourse перейдите в <span className="highlight">Список заказов → Дополнительные поля</span>.</p>
 
                 <p>Создайте поле:</p>
                 <ul className="step-list">
@@ -81,10 +81,10 @@ const createCopyParticles = (e) => {
                         <strong>Название:</strong>{' '}
                         <span
                             className="copyable-text"
-                            onClick={(e) => handleCopyText('Разница между суммой клиента и финальным платежом', e)}
+                            onClick={(e) => handleCopyText('Апгрейд заказа', e)}
                             title="Нажмите, чтобы скопировать"
                         >
-                            Разница между суммой клиента и финальным платежом
+                            Апгрейд заказа
                         </span>
                         {copied && <span className="copied-indicator"> ✓ Скопировано!</span>}
                     </li>

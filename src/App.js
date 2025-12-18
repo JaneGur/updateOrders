@@ -7,8 +7,9 @@ import Step3 from './components/Instruction/Step2';
 import Step4 from './components/Instruction/Step3';
 import Step5 from './components/Instruction/Step4';
 import Step6 from './components/Instruction/Step5';
-import Step7 from './components/Instruction/Step6';
+import Step7 from "./components/Instruction/Step6";
 import Step8 from './components/Instruction/Step7';
+import Step9 from './components/Instruction/Step8';
 import Footer from './components/Instruction/Footer';
 import './App.css';
 
@@ -54,10 +55,10 @@ function App() {
     <div className="app-container">
       <div className="container">
         <Navigation activeSection={activeSection} />
-        
+
         <div className="main-content">
           <Header />
-          
+
           <main>
             <Step0 id="step0" />
             <Step2 id="step2" />
@@ -67,8 +68,9 @@ function App() {
             <Step6 id="step6" managerNames={managerNames} />
             <Step7 id="step7" />
             <Step8 id="step8" />
+            <Step9 id="step9" />
           </main>
-          
+
           <Footer />
         </div>
       </div>

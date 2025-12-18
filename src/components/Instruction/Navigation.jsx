@@ -53,6 +53,12 @@ const Navigation = ({ activeSection }) => {
                     href="#step8"
                     className={`nav-item ${activeSection === 'step8' ? 'active' : ''}`}
                 >
+                    Шаг 9. Добавление иконки в боковое меню
+                </a>
+                <a
+                    href="#step9"
+                    className={`nav-item ${activeSection === 'step9' ? 'active' : ''}`}
+                >
                     Шаг 8. Ограничение редактирования
                 </a>
             </div>
