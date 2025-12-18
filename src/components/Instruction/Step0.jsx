@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import VideoInstruction from './VideoInstruction';
 
 const Step0 = ({ id }) => {
     const sectionRef = useRef(null);
+    const [showVideo, setShowVideo] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -28,15 +29,8 @@ const Step0 = ({ id }) => {
         };
     }, []);
 
-    // Пример видео - вы можете заменить на реальные URL
-    const videos = [
-        {
-            src: "https://disk.yandex.ru/client/disk/Chatium/Лайки%20на%20уроки?idApp=client&dialog=slider&idDialog=%2Fdisk%2FChatium%2FЛайки%20на%20уроки%2F2025-10-25%2008-04-13.mp4", // замените на реальный путь к видео
-            title: "Видео инструкция: Обзор процесса настройки",
-            description: "Подробно рассмотрим весь процесс настройки системы от начала до конца. Рекомендуем посмотреть это видео перед началом работы.",
-            poster: "/images/video-poster-1.jpg" // замените на реальный путь к постеру
-        },
-    ];
+    // Видео URL - замените на ваш реальный путь
+    const videoSrc = "https://disk.yandex.ru/client/disk/Chatium/Лайки%20на%20уроки?idApp=client&dialog=slider&idDialog=%2Fdisk%2FChatium%2FЛайки%20на%20уроки%2F2025-10-25%2008-04-13.mp4";
 
     return (
         <section id={id} className="content-section" ref={sectionRef}>
@@ -47,7 +41,24 @@ const Step0 = ({ id }) => {
             <div className="section-content">
                 <p>Подробно рассмотрим весь процесс настройки системы от начала до конца.</p>
 
-                <div><button className="watch-video-btn">Смотреть видео</button></div>
+                <div>
+                    <button
+                        className="watch-video-btn"
+                        onClick={() => setShowVideo(!showVideo)}
+                    >
+                        {showVideo ? 'Скрыть видео' : 'Смотреть видео'}
+                    </button>
+                </div>
+
+                {showVideo && (
+                    <VideoInstruction
+                        videoSrc={videoSrc}
+                        title="Обзор процесса настройки"
+                        description="Полная видео-инструкция по настройке системы учета апгрейда заказов"
+                        poster="/images/video-poster-1.jpg"
+                        controls={true}
+                    />
+                )}
 
                 <div className="video-note">
                     <h4>После просмотра видео перейдем к следующим шагам:</h4>

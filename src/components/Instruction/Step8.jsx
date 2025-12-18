@@ -166,15 +166,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         <li>Название пункта меню - замените <span className="parameter">Таблица</span> на нужное название</li>
                         <li>Ссылку - измените URL в атрибуте <span className="parameter">href</span></li>
                         <li>Иконку - замените <span className="parameter">src</span> у изображения на свою иконку</li>
-                        <li>Tooltip - измените текст в атрибуте <span className="parameter">title</span></li>
                     </ul>
                 </div>
 
                 <div className="info-box" style={{ marginTop: '20px', backgroundColor: '#fff3cd' }}>
                     <strong>⚠️ Важно:</strong>
                     <p>• Пункт меню будет отображаться только для пользователей с указанными ID</p>
-                    <p>• Код использует <span className="parameter">MutationObserver</span> для динамического добавления элемента в меню</p>
-                    <p>• Пункт меню добавляется после элемента Chatium, если он существует</p>
                 </div>
             </div>
         </section>
